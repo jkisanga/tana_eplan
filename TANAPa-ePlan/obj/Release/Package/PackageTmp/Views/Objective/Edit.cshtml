@@ -1,0 +1,61 @@
+﻿@model TANAPa_ePlan.Models.Objective
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Objective</legend>
+
+        @Html.HiddenFor(model => model.ObjectiveId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ODescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ODescription)
+            @Html.ValidationMessageFor(model => model.ODescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OCode)
+            @Html.ValidationMessageFor(model => model.OCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FId, "FYr")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.delete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.delete)
+            @Html.ValidationMessageFor(model => model.delete)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

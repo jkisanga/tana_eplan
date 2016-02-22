@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.Objective>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF OBJECTIVE
+                <i class="pull-right"><a href="@Url.Action("Create", "Objective")" class="btn btn-primary">Add Objective</a>
+</i>
+            </div>
+    <div class="row">
+    <div class="col-md-12">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+
+@helper RenderActionColumn(int Id)
+{
+    
+<div class="btn-group">
+<button class="btn btn-success">Options</button>
+<button data-toggle="dropdown" class="btn btn-success dropdown-toggle"><span class="caret"></span></button>
+<ul class="dropdown-menu">
+<li><a href="@Url.Action("Edit", "Edit", new { id = Id })">Update</a></li>
+<li><a href="@Url.Action("AddTarget", "Objective", new { id = Id })">Add Target</a></li>
+</ul>
+</div>
+ }
+
+@using GridMvc.Html
+        @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.FYear.Year)
+                   .Titled("F Year");
+
+               columns.Add(c => c.OCode)
+                   .Titled("Code");
+               columns.Add(c => c.ODescription)
+                   .Titled("Description");
+               columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.ObjectiveId));
+
+           })
+                        </div>
+                </div>
+    </div>
+    </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

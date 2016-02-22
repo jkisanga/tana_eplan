@@ -1,0 +1,145 @@
+﻿@model TANAPa_ePlan.Models.AdhocTask
+
+@{
+    ViewBag.Title = "Implementation Form";
+}
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+         {
+             Text = "10",
+             Value = "10"
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "20",
+             Value = "20",
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "30",
+             Value = "30"
+         });
+
+    listItems.Add(new SelectListItem
+    {
+        Text = "40",
+        Value = "40"
+    });
+    listItems.Add(new SelectListItem
+       {
+           Text = "50",
+           Value = "50"
+       });
+    listItems.Add(new SelectListItem
+       {
+           Text = "60",
+           Value = "60"
+       });
+    listItems.Add(new SelectListItem
+       {
+           Text = "70",
+           Value = "70"
+       });
+    listItems.Add(new SelectListItem
+       {
+           Text = "80",
+           Value = "80"
+       });
+    listItems.Add(new SelectListItem
+       {
+           Text = "90",
+           Value = "90"
+       });
+    listItems.Add(new SelectListItem
+       {
+           Text = "100",
+           Value = "100"
+       });
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @{Html.RenderAction("TopMenu");}
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b class="btn ">Report Implementation  for <b>@Html.DisplayFor(x => x.Description)</b> </b>
+            </div>
+
+            <div class="panel-body">
+
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+                               
+                                <ul >
+                                   
+                                     <li>
+                                            <a href="#">
+                                     <span class="glyphicon glyphicon-align-left text-success" ></span> 
+                                                  @Html.DisplayFor(x => x.Description)
+                                            </a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-info-sign text-danger" ></span>  
+                                           @Html.DisplayFor(x => x.CreatedAt)
+                                          
+                                            </a>
+                                    </li>
+                         
+                                   </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                            <div class="panel-footer text-muted">
+                        <strong>Note : </strong>Please note that Supervisor will assess you Report.
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("ReportMyAdhocTask", "Officer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(x => x.AdhocTaskId)
+                            @Html.ValidationSummary(true)
+                            <div class="panel-body">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">Challenge(s) / Comment(s) / Suggestion(s)</label>
+                                @Html.TextAreaFor(model => model.Challenge, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Challenge)
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                   
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group has-success">
+                                        <label class="control-label" for="success">Supportive Document <small style="color: black">(Attach Doc)</small></label>
+                                        <input type="file" name="Attachment" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <button type="submit"  class="btn btn-primary pull-right" >Submit Report  <span class="glyphicon glyphicon-circle-arrow-right"></span>   </button> 
+                          </div>
+                        }
+                              
+                    </div>
+                    
+                </div>
+            </div>
+        </div>

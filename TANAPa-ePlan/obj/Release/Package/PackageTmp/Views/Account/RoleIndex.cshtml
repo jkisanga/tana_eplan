@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Role Listing";
+}
+
+    
+    <fieldset>
+@*    <div class="span3"> @Html.ActionLink("Add New Role", "RoleCreate") </div>*@
+    <div class="span3"> @Html.ActionLink("Assign Role to User", "RoleAddToUser")</div>
+    <legend>List of Roles</legend>
+
+    <table class="table table-bordered table-striped table-hover">
+    <thead>
+    <tr>
+        
+        <th>
+            Role Name
+        </th>
+        <th>
+            Action
+        </th>
+          </tr>
+</thead>
+            
+@foreach (string s in Model)
+{
+  <tr>
+      <td>
+            @s
+        </td>
+      <td>
+            
+            </td>
+            </tr>
+}
+        </table>
+
+
+    
+
+    </fieldset>
+
+
+    

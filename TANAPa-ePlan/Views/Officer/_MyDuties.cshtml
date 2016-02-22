@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.DailyActivity>
+@if(ViewBag.myDuties > 0)
+{
+<ol >
+@foreach (var item in Model)
+{
+        <li>
+            
+           <a href="@Url.Action("ReportMyDuty", "Officer", new { id = item.DailyActivityId})" title="Click to Report Implementation">
+               @Html.DisplayFor(modelItem => item.DeptActivity.Activity)
+                @if(item.Parcent > 0)
+                {
+            <i><img src="~/assets/img/important.PNG" /></i>
+                }
+
+           </a>
+            
+
+       <small class="pull-right"> Status: 
+        @if(item.Status == "Pending"){<i style="color:rgba(237, 147, 147, 0.96)">@Html.DisplayFor(modelItem => item.Status)</i>
+        }else if(item.Status == "Approved"){<i style="color:rgb(142, 246, 10)">@Html.DisplayFor(modelItem => item.Status)</i> }
+          else{<i style="color:rgb(255, 216, 0)">@Html.DisplayFor(modelItem => item.Status)</i> }
+        </small>
+
+
+     
+                    
+        </li>
+       
+}
+    </ol>
+}
+else
+{
+
+<h5 style="color:red">I ASSIGN NO DUTY TODAY !!</h5>
+}

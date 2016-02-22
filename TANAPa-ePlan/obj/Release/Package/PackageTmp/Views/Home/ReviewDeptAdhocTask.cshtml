@@ -1,0 +1,89 @@
+﻿@model TANAPa_ePlan.Models.AdhocTask
+@{Html.RenderAction("DeptTopMenu");}
+<hr />
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+         {
+             Text = "Re-Work",
+             Value = "Re-Work"
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Approved",
+             Value = "Approved",
+         });
+   
+    
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        CONTROL PANEL
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+           
+                <div class="alert alert-info">
+                     <p>
+                        <strong>Performed By:</strong>
+                        @Html.DisplayFor(x => x.UserProfile.Firstname)&nbsp; @Html.DisplayFor(x => x.UserProfile.Surname) 
+                    </p>
+                     <p>
+                        <strong>Activity :</strong>
+                        @Html.DisplayFor(x => x.Description)
+                    </p>
+
+                    <p>
+                        <strong>Perfomed  on:</strong>
+                        @Html.DisplayFor(x => x.CreatedAt)
+                    </p>
+               
+                   
+                    <p>
+                        <strong>Current Status:</strong>
+                        @Html.DisplayFor(x => x.Status)
+                    </p>
+                   @* @if (ViewBag.Attach != null)
+                    {
+                    <p>
+                        <strong>Attachment:</strong>
+                       <a href="@Url.Action("AdhocAttachment", "Home", new { id = ViewBag.DailyActivityId})" title="Click to download">@Html.DisplayFor(x => x.Status)</a> 
+                    </p>
+                    }*@
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("ReportAdhocEvaluation", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x => x.AdhocTaskId)
+                    @Html.Hidden("DeptId")
+                    @Html.ValidationSummary(true)
+                    <div class="panel-body">
+                        <div class="form-group has-success">
+                            <label class="control-label" for="success">Addition Information</label>
+                            @Html.TextAreaFor(model => model.SupervisorComment, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SupervisorComment)
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group has-success">
+                                    <label class="control-label" for="success">Remark </label>
+                                    @Html.DropDownListFor(model => model.Status, listItems, "-- Select --", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <hr />
+                                <button type="submit" class="btn btn-primary pull-right">Submit Review  <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

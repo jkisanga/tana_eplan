@@ -1,0 +1,156 @@
+﻿@model TANAPa_ePlan.Models.UserProfile
+@{Html.RenderAction("MainMenu", "Home");}
+<hr />
+<div class="container">
+      <div class="row">
+        <div class="col-xs-12 toppad " >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">@Html.DisplayFor(x => x.Firstname) @Html.DisplayFor(x => x.Surname) </h3> 
+            </div>
+            <div class="panel-body">
+              <div class="row">
+             
+                <div class=" col-md-6 col-lg-6 "> 
+
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Full Name:</td>
+                        <td>@Html.DisplayFor(x => x.Firstname) @Html.DisplayFor(x => x.Othername) @Html.DisplayFor(x => x.Surname)</td>
+                      </tr>
+                      <tr>
+                        <td>Hire date:</td>
+                        <td>@Html.DisplayFor(x => x.DateHired)</td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td>@Html.DisplayFor(x => x.Birthdate)</td>
+                      </tr>
+                   
+                         
+                             <tr>
+                        <td>Gender</td>
+                        <td>@Html.DisplayFor(x => x.Gender)</td>
+                      </tr>
+                        <tr>
+                        <td>Marital Status</td>
+                        <td>@Html.DisplayFor(x => x.MaritalStatus)</td>
+                      </tr>
+                        <tr>
+                        <td>Telephone</td>
+                        <td>@Html.DisplayFor(x => x.Telephone)</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="@Html.DisplayFor(x => x.Telephone)">@Html.DisplayFor(x => x.Email)</a></td>
+                      </tr>
+                        <tr>
+                        <td>Department :</td>
+                        <td>@Html.DisplayFor(x => x.Department.DeptName)
+                        </td>
+                      </tr>
+                        <tr>
+                        <td>Job :</td>
+                        <td>@Html.DisplayFor(x => x.Job)
+                        </td>
+                      </tr>
+                       
+                     
+                    </tbody>
+                  </table>
+                </div>
+
+
+<div class=" col-md-6 col-lg-6 "> 
+
+                  <table class="table table-user-information">
+                    <tbody>
+ <tr>
+                        <td>Job Group:</td>
+                        <td>@Html.DisplayFor(x => x.JobGroup)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Branch:</td>
+                        <td>@Html.DisplayFor(x => x.Branch)</td>
+                      </tr>
+                      <tr>
+                        <td>Section:</td>
+                        <td>@Html.DisplayFor(x => x.Section)</td>
+                      </tr>
+                        <tr>
+                        <td>Section Group:</td>
+                        <td>@Html.DisplayFor(x => x.SectionGroup)</td>
+                      </tr>
+                      <tr>
+                        <td>Unit Group :</td>
+                        <td>@Html.DisplayFor(x => x.UnitGroup)</td>
+                      </tr>
+                   
+                         
+                             <tr>
+                        <td>Cost Center</td>
+                        <td>@Html.DisplayFor(x => x.CostCenter)</td>
+                      </tr>
+                        <tr>
+                        <td>Employment Type</td>
+                        <td>@Html.DisplayFor(x => x.EmploymentType)</td>
+                      </tr>
+                      <tr>
+                        <td>Membership</td>
+                        <td>@Html.DisplayFor(x => x.Membership)</td>
+                      </tr>
+                        
+                        
+                    @if(ViewBag.Status == 0)
+                        { <tr>
+                        <td>Status</td><td>
+                        <b class="btn btn-success" >Active </b>
+                        </td>
+                        </tr>
+                        }else
+                        {<tr>
+                        <td>Status</td>
+                        <td><b class="btn btn-warning" >Inactive </b></td>
+                            </tr>
+                            <tr>
+                        <td>Deactivate Reason</td>
+                        <td>@Html.DisplayFor(x => x.DeactivateReason)</td>
+                        </tr>
+
+                        }
+
+                                 
+                      
+                     
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                            <a href="#" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        
+                <span class="pull-right">
+                @if(ViewBag.Status == 0)
+                        {
+                            <a href="@Url.Action("Deactivate", "Admin", new{id = @Html.DisplayFor(x => x.UserId)})" title="Deactivate this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> </a>
+                        }else{
+                            using (Html.BeginForm("Activate", "Admin", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="UserId" value="@Html.DisplayFor(x => x.UserId)" />
+                                        <button type="submit" title="Activate this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                    }
+                            @*<a href="@Url.Action("Activate", "Admin", new{id = @Html.DisplayFor(x => x.UserId)})" title="Activate this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-ok"></i> </a>*@
+                       } </span>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>

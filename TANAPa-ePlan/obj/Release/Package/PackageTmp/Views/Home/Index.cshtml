@@ -1,0 +1,152 @@
+﻿@*@if()
+{
+{Html.RenderAction("MainMenu");}
+}*@
+
+@{Html.RenderAction("DeptTopMenu");}
+
+<hr />
+<div class="row">
+    <!-- center left-->
+    <div class="col-md-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                TODAY ACTIVITIES
+<button class="btn btn-success pull-right " >@DateTime.Now.ToString("dd-MMM-yyyy")</button>
+            </div>
+          
+                <div class="table-responsive">
+                    @{Html.RenderAction("TodayDeptActivity");}
+                </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                TODAY AD HOC TASK(S)
+<button class="btn btn-success pull-right " >@DateTime.Now.ToString("dd-MMM-yyyy")</button>
+            </div>
+                <div class="table-responsive">
+                    @{Html.RenderAction("TodayDeptAdhocTask");}
+             
+            </div>
+        </div>
+
+    </div>
+    <!-- center right-->
+    <div class="col-md-5">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                DEPARTMENTAL CONTROL PANEL
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#task" data-toggle="tab">Ad hoc task <i class="glyphicon glyphicon-align-justify"></i></a>
+                    </li>
+
+                    <li class=""><a href="#activity" data-toggle="tab">Our Activities <i class="glyphicon glyphicon-th"></i></a>
+                    </li>
+                    <li class=""><a href="#annouce" data-toggle="tab">Announce <i class="glyphicon glyphicon-bullhorn"></i></a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="task">
+                        <div class="panel-body">
+                            <div class="form form-vertical">
+                                @using (Html.BeginForm("AdhocTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {                                
+                                    @Html.Hidden("UserId")
+                                    @Html.Hidden("DeptId")
+                                    <div class="control-group">
+                                        <label>Select Officer     <i><small style="color: green">( Officer to assign task )</small></i></label>
+                                        <div class="controls">
+                                            @Html.DropDownList("PerformedBy", null, "---Select Officer---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                <div class="control-group">
+                                    <label>Task Description</label>
+                                    <div class="controls">
+                                        <textarea class="form-control" name="Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label>File Attachment  <i><small style="color: green">( Browse file if any)</small></i></label>
+                                    <div class="controls">
+                                        <input type="file" name="Attachment" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label></label>
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">
+                                            Post
+                                        </button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="annouce">
+                        <div class="panel-body">
+                            <div class="form form-vertical">
+                               
+                                @using (Html.BeginForm("Annoucement", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.Hidden("PerformedBy")
+                                    @Html.Hidden("DeptId")
+   
+                                    <div class="control-group">
+                                        <label>Message</label>
+                                        <div class="controls">
+                                            <textarea class="form-control" name="Message"></textarea>
+                                        </div>
+                                    </div>
+                                <div class="control-group">
+                                    <label>File Attachment  <i><small style="color: green">( Browse file if any)</small></i></label>
+                                    <div class="controls">
+                                        <input type="file" name="Attachment" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label></label>
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">
+                                            Post
+                                        </button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="activity">
+                        <div class="panel-body">
+                            <div class="form form-vertical">
+                                 @{Html.RenderAction("ListOurActivity", "Home");}
+                                @using (Html.BeginForm("DeptActivity", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.Hidden("DeptId")
+                                    <div class="control-group">
+                                        <label>Add Activity    <i><small style="color: green">( Activities belong to your Dept )</small></i></label>
+                                        <div class="controls">
+                                            <textarea class="form-control" name="Activity"></textarea>
+                                        </div>
+                                    </div>
+
+                                <div class="control-group">
+                                    <label></label>
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">
+                                            Post
+                                        </button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

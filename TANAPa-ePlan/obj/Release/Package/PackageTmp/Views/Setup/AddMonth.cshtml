@@ -1,0 +1,43 @@
+﻿@model TANAPa_ePlan.Models.Month
+
+@{
+    ViewBag.Title = "Month";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">Month Manager </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+         @{Html.RenderAction("ListMonth", "Setup");}
+    </div>
+
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ADD/EDIT MONTH IN QUARTER
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">ACTIVE QUAERTER</label>
+                        @Html.Hidden("QId")
+                        @Html.TextBox("QuarterName", null, new { @class = "form-control", readOnly=true })
+                        @Html.ValidationMessageFor(model => model.QId)
+                    </div>
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">SELECT MONTH</label>
+                        @Html.TextBoxFor(model => model.MonthName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MonthName)
+                    </div>                   
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

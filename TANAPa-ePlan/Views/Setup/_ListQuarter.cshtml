@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.Quarter>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF QUARTER
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+
+@helper RenderActionColumn(int Id)
+{
+    @Html.ActionLink("Edit", "EditQuarter", new { id = Id})
+ }
+
+@using GridMvc.Html
+        @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.FYear.Year)
+                   .Titled("F Year");
+
+               columns.Add(c => c.QuarterName)
+                   .Titled("Quarter");
+               columns.Add(c => c.Start)
+                   .Format("{0:dd-MMM-yyyy}")
+                   .Titled("Start");
+               columns.Add(c => c.End)
+                   .Format("{0:dd-MMM-yyyy}")
+                   .Titled("End");
+               columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.QId));
+
+           })
+                        </div>
+                </div>
+    </div>
+    </div>

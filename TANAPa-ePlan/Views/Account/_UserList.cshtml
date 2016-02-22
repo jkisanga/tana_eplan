@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.UserListView>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF USERS
+<i class="pull-right"><a href="@Url.Action("RoleIndex", "Account")" class="btn btn-primary"><i class="icon-backward"></i>User Role</a>
+</i>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+@using GridMvc.Html
+            @helper RenderActionColumn(int UserId)
+{
+    if(User.IsInRole("admin")){
+<div class="btn-group">
+										  <button class="btn btn-success">Options</button>
+										  <button data-toggle="dropdown" class="btn btn-success dropdown-toggle"><span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+											<li><a href="@Url.Action("Edit", "Account", new { id = UserId })">Update</a></li>
+											<li><a href="@Url.Action("ResetPassword", "Account", new { id = UserId })">Reset Password</a></li>
+											<li><a href="@Url.Action("RoleAddToUser", "Admin", new { id = UserId })">Assign Role</a></li>
+										  </ul>
+										</div>
+}
+            }
+@Html.Grid(Model).Columns(columns =>
+                    {
+                        columns.Add(c => c.UserName).Titled("User Name").Filterable(true);
+                        columns.Add(c => c.Firstname).Titled("First Name").Filterable(true);
+                        columns.Add(c => c.Surname).Titled("Last Name").Filterable(true);
+                        columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.UserId));
+                    }).Sortable(true)
+
+</div>
+</div>
+</div>
+</div>

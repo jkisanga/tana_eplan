@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>TANAPA-eMonitoring</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">
+
+                    <img src="~/assets/img/tanapa.jpg" />
+                </a>
+
+            </div>
+            </div>
+        </div>
+    <!-- LOGO HEADER END-->
+   
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line"> </h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                   
+                     @RenderBody()
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info">
+                        E-MONITOR is the electronic monotoring and implementation tracking system for ensuring accountability of the day to day activities in TANAPA.
+                        <br />
+                         <strong> Some of its features are given below :</strong>
+                        <ul>
+                            <li>
+                                Perfomance Analysis 
+                            </li>
+                            <li>
+                                Implementation Reports
+                            </li>
+                            <li>
+                                Staff Management
+                            </li>
+                            <li>
+                                Reminder 
+                            </li>
+                        </ul>
+                       
+                    </div>
+                    <div class="alert alert-success">
+                         <strong> Instructions To Use:</strong>
+                        <ol>
+                            <li>
+                               Login into E-MONITOR with given credentials
+                            </li>
+                            <li>
+                                 Review assign task(s) on your Dashboard
+                            </li>
+                            <li>
+                               Report Implementation for Your task(s)
+                            </li>
+                            <li>
+                                 View other menu(s) related to you
+                            </li>
+                        </ol>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2015 TANAPA-eMonitoring | By : <a href="#" target="_blank"></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="~/assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="~/assets/js/bootstrap.js"></script>
+</body>
+</html>

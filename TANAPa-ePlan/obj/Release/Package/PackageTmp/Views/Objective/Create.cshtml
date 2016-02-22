@@ -1,0 +1,63 @@
+﻿@model TANAPa_ePlan.Models.Objective
+
+@{
+    ViewBag.Title = "Objective";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">OBJECTIVE </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ADD OBJECTIVE
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">ACTIVE FINANCIAL YEAR</label>
+                                @Html.Hidden("FYearId")
+                                @Html.TextBox("FYear", null, new { @class = "form-control", readOnly = true })
+                                @Html.ValidationMessageFor(model => model.FYearId)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">OBJECTIVE CODE</label>
+                                @Html.TextBoxFor(model => model.OCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.OCode)
+                            </div>
+                        </div>
+                    </div>
+                    
+                     
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">DESCRIPTION</label>
+                        @Html.TextAreaFor(model => model.ODescription, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ODescription)
+                    </div>                 
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

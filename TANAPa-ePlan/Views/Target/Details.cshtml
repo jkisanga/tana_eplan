@@ -1,0 +1,50 @@
+﻿@model TANAPa_ePlan.Models.Target
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Target</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Objective.ODescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Objective.ODescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TargetNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TargetNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DeptName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DeptName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.delete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.delete)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TargetId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

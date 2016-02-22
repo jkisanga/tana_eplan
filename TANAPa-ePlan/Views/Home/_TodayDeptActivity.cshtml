@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.DailyActivity>
+
+<table class="table table-striped table-bordered table-hover">
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+        <td>
+          <p>  @if(item.Status != "Pending")
+            {
+            <a href="@Url.Action("DetpActivityReview", "Home", new { id = item.DailyActivityId })" title="Click to Review Report">
+               <p>@Html.DisplayFor(modelItem => item.DeptActivity.Activity)</p> 
+                
+            </a>
+            }else
+            {
+                @Html.DisplayFor(modelItem => item.DeptActivity.Activity)
+            }
+            </p>
+        <small class="pull-left">
+        Created By: 
+        @if(item.Parcent > 0)
+        {
+        <b>I to : </b>@Html.DisplayFor(ModelItem => item.UserProfile.Firstname)<i></i>  @Html.DisplayFor(ModelItem => item.UserProfile.Surname)
+        }else
+        {
+             @Html.DisplayFor(ModelItem => item.UserProfile.Firstname)<i></i>  @Html.DisplayFor(ModelItem => item.UserProfile.Surname)
+        }</small>
+        <small class="pull-right"> Status: 
+        @if(item.Status == "Pending"){<i style="color:rgba(237, 147, 147, 0.96)">@Html.DisplayFor(modelItem => item.Status)</i>
+        }else if(item.Status == "Approved"){<i style="color:rgb(142, 246, 10)">@Html.DisplayFor(modelItem => item.Status)</i> }
+          else{<i style="color:rgb(255, 216, 0)">@Html.DisplayFor(modelItem => item.Status)</i> }
+        </small>
+        </td>
+       </tr>
+    }
+</table>
+
+

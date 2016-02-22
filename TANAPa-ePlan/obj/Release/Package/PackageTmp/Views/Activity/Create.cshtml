@@ -1,0 +1,115 @@
+﻿@model TANAPa_ePlan.Models.Activity
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Activity</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TargetId, "Target")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TargetId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TargetId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActivityNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ActivityNo)
+            @Html.ValidationMessageFor(model => model.ActivityNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADescription)
+            @Html.ValidationMessageFor(model => model.ADescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Budget)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Budget)
+            @Html.ValidationMessageFor(model => model.Budget)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Challenge)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Challenge)
+            @Html.ValidationMessageFor(model => model.Challenge)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.wayforward)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.wayforward)
+            @Html.ValidationMessageFor(model => model.wayforward)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remark)
+            @Html.ValidationMessageFor(model => model.Remark)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.delete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.delete)
+            @Html.ValidationMessageFor(model => model.delete)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

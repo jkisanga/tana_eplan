@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.AdhocTask>
+@if (ViewBag.myAdhock > 0)
+{
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li>           
+                    @using (Html.BeginForm("AdhocAttachment", "Officer", FormMethod.Post))
+                    {
+                    
+                    <a href="@Url.Action("ReportMyAdhocTask", "Officer", new { id = item.AdhocTaskId })" title="Click to Report Implementation">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </a>
+
+
+        <small class="pull-right"> Status: 
+        @if(item.Status == "Pending"){<i style="color:rgba(237, 147, 147, 0.96)">@Html.DisplayFor(modelItem => item.Status)</i>
+        }else if(item.Status == "Approved"){<i style="color:rgb(142, 246, 10)">@Html.DisplayFor(modelItem => item.Status)</i> }
+          else{<i style="color:rgb(255, 216, 0)">@Html.DisplayFor(modelItem => item.Status)</i> }
+        </small>
+                       if (item.Attachment != null)
+                    { <div class="pull-right"> 
+                    <input type="hidden" value="@item.AdhocTaskId" name="id" />
+                
+                    <button type="submit" title="Click to View the attachment">
+                        <span class="badge pull-right"><i class="glyphicon glyphicon-paperclip"></i></span>
+                    </button>
+                        </div>        
+                    }
+                     if(item.Parcent > 0)
+                {
+            <i><img src="~/assets/img/important.PNG" /></i>
+                }
+
+                }
+  
+            </li>
+       
+        }
+    </ol>
+}
+else
+{
+
+    <h5 style="color: red">NO AD HOC TASK TODAY !!</h5>
+}
+

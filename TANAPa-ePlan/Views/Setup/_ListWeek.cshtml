@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.Week>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF WEEKS
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+
+@helper RenderActionColumn(int Id)
+{
+    @Html.ActionLink("Edit", "EditMonth", new { id = Id})
+ }
+
+@using GridMvc.Html
+        @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.Month.MonthName)
+                   .Format("{0:MMM/yyyy}")
+                   .Titled("Month");
+
+               columns.Add(c => c.WeekName)                  
+                   .Titled("Week");
+               
+               columns.Add(c => c.Status)
+                   .Titled("Status");
+               columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.WeekId));
+
+           })
+                        </div>
+                </div>
+    </div>
+    </div>
+
+

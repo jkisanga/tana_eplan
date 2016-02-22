@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.Department>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF DEPT
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+
+@helper RenderActionColumn(int Id)
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Id})
+ }
+
+@using GridMvc.Html
+        @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.DeptCode)
+                   .Titled("Dept Code");
+
+               columns.Add(c => c.DeptName)
+                   .Titled("DeptName");
+
+               columns.Add(c => c.Head)
+                   .Titled("Head of Dept");
+               columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.DeptId));
+
+           })
+                        </div>
+                </div>
+    </div>
+    </div>

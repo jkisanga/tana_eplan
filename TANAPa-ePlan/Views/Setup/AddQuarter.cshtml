@@ -1,0 +1,83 @@
+﻿@model TANAPa_ePlan.Models.Quarter
+
+@{
+    ViewBag.Title = "QUARETR";
+}
+
+
+@{
+   List<SelectListItem> listItems= new List<SelectListItem>();
+   listItems.Add(new SelectListItem
+        {
+          Text = "Quarter 1",
+          Value = "Quarter 1"
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Quarter 2",
+            Value = "Quarter 2",
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Quarter 3",
+            Value = "Quarter 3"
+        });
+
+   listItems.Add(new SelectListItem
+   {
+       Text = "Quarter 4",
+       Value = "Quarter 4"
+   });
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">Quarter Manager </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+         @{Html.RenderAction("ListQuarter", "Setup");}
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ADD/EDIT QUARTER
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">FINANCIAL YEAR</label>
+                        @Html.Hidden("FYearId")
+                        @Html.TextBox("FYear", null, new { @class = "form-control", readOnly=true })
+                        @Html.ValidationMessageFor(model => model.FYearId)
+                    </div>
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">QUARTER</label>
+                        @Html.DropDownListFor(model => model.QuarterName, listItems, "-- Select Quarter --", new { @class="form-control"})
+                        @Html.ValidationMessageFor(model => model.QuarterName)
+                    </div>
+                  <div class="form-group has-success">
+                        <label class="control-label" for="success">START DATE</label>
+                        @Html.TextBoxFor(model => model.Start,  new { @class="form-control"})
+                        @Html.ValidationMessageFor(model => model.Start)
+                    </div>
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">END DATE</label>
+                        @Html.TextBoxFor(model => model.End,  new { @class="form-control"})
+                        @Html.ValidationMessageFor(model => model.End)
+                    </div>
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

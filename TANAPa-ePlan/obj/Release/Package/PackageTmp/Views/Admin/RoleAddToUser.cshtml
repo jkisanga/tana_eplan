@@ -1,0 +1,60 @@
+﻿@{Html.RenderAction("MainMenu", "Home");}
+@{
+    ViewBag.Title = "ROLE MANAGER";
+}
+
+
+@{
+   List<SelectListItem> listItems= new List<SelectListItem>();
+   listItems.Add(new SelectListItem
+        {
+          Text = "Manager",
+          Value = "Manager"
+        });
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">ROLE MANAGER </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ROLE MANAGER
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">Username</label>
+                               @Html.TextBox("UserName", null, new {@class="form-control", readOnly=true})
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">Existing Role</label>
+                               @Html.TextBox("OldRoleName", null, new {@class="form-control", readOnly=true})
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group has-success">
+                                <label class="control-label" for="success">Select Role</label>
+
+                             @Html.DropDownList("RoleName", listItems, "-- Select --", new { @class="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    
+                                    
+                    <hr />
+                    <input type="submit" value="Assign" class="btn btn-primary pull-right" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model TANAPa_ePlan.Models.UserProfile
+@{Html.RenderAction("MainMenu", "Home");}
+<hr />
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Deactivate :  <b >@Html.DisplayFor(x => x.Firstname) @Html.DisplayFor(x => x.Othername) @Html.DisplayFor(x => x.Surname)</b>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Deactivate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+<b>@ViewBag.Message </b>
+@Html.HiddenFor(x => x.UserId)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group has-success">
+                            <label class="control-label" for="success"> Reason</label>
+                            @Html.TextArea("DeactvateReason", null, new{@class= "form-control"})
+                        </div>
+<small>Note: <i style="color:red;"> @Html.DisplayFor(x => x.Firstname) @Html.DisplayFor(x => x.Othername) @Html.DisplayFor(x => x.Surname) will not be able to login and use this system until re-activated.</i></small>
+
+                    </div>
+                </div>
+                <hr />
+                <input type="submit" value="Deactivate" class="btn btn-primary pull-right" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

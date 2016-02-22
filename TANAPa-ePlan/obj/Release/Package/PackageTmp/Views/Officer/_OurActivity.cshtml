@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.DeptActivity>
+<table class="table table-striped">
+@foreach (var item in Model) {
+    <tr>
+        <td style="width:40px">
+            <input type="checkbox" name="DeptActivityId" value="@item.DeptActivityId" class="form-control" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activity, new { @class="form-control"})
+        </td>
+    </tr>
+}
+
+</table>

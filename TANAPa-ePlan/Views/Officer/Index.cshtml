@@ -1,0 +1,111 @@
+﻿@{Html.RenderAction("TopMenu");}
+<hr />
+<div class="row">
+    <!-- center left-->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                MY TODAY DUTIES
+                <button class="btn btn-warning pull-right " >@DateTime.Now.ToString("dd-MMM-yyyy")</button>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">                 
+                            @{Html.RenderAction("MyDuties");}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                MY TODAY AD HOC TASK(S)
+<button class="btn btn-warning pull-right " >@DateTime.Now.ToString("dd-MMM-yyyy")</button>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    @{Html.RenderAction("MyAdhocTask");}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- center right-->
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                MY CONTROL PANEL
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#task" data-toggle="tab">Our Duties <i class="glyphicon glyphicon-cloud"></i></a>
+                    </li>
+                    <li class=""><a href="#annouce" data-toggle="tab">Ad hoc task <i class="glyphicon glyphicon-cloud"></i></a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="task">
+                        <div class="panel-body">
+                            <div class="form form-vertical">
+                                @using (Html.BeginForm("DailyActivity", "Officer", FormMethod.Post))
+                                {
+                                    @Html.Hidden("PerformedBy")
+                                    @Html.Hidden("DeptId")  
+                                    { Html.RenderAction("OurActivity"); }
+                                
+                                    <div class="control-group">
+                                        <label></label>
+                                        <div class="controls">
+                                            <button type="submit" class="btn btn-primary">
+                                                Post
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="annouce">
+                        <div class="panel-body">
+                            <div class="form form-vertical">
+                                @using (Html.BeginForm("AdhocTask", "Officer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    
+                                    @Html.Hidden("PerformedBy")
+                                    @Html.Hidden("DeptId")
+                                    @Html.Hidden("UserId")
+                                    <div class="control-group">
+                                        <label>Created By</label>
+                                        <div class="controls">
+                                            @Html.TextBox("MyName", null, new { @class = "form-control", readOnly = true })
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>Task Description</label>
+                                        <div class="controls">
+                                            <textarea class="form-control" name="Description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>File Attachment  <i><small style="color: green">( Browse file if any)</small></i></label>
+                                        <div class="controls">
+                                            <input type="file" name="Attachment" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label></label>
+                                        <div class="controls">
+                                            <button type="submit" class="btn btn-primary">
+                                                Post
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

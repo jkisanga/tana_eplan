@@ -1,0 +1,38 @@
+﻿@model TANAPa_ePlan.Models.FYear
+
+@{
+    ViewBag.Title = "Financial Year";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">Financial Year Manager </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+         @{Html.RenderAction("ListFYear", "Setup");}
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ADD/EDIT FINANCIAL YEAR
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(x => x.FYearId)
+                    @Html.ValidationSummary(true)
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">ENTER YEAR <small style="color:green">e.g 2015/2016</small></label>
+                        @Html.TextBoxFor(model => model.Year, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Year)
+                    </div>                   
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

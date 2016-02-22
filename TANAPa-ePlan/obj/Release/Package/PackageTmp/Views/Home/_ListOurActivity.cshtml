@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.DeptActivity>
+<table class="table">
+    <ol>
+@foreach (var item in Model) {
+        <li>
+            
+            @using (Html.BeginForm("RemoveOurActivity", "Home", FormMethod.Post))
+            {
+                @Html.DisplayFor(modelItem => item.Activity) 
+                <input type="hidden" value="@item.DeptActivityId" name="id" />
+                
+                                        <button type="submit" class="btn btn-warning btn-xs">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </button>
+                                
+            }
+&nbsp;
+        <a href="@Url.Action("AssignActivity", "Home", new{id = item.DeptActivityId})"> Assign to</a>
+        </li>
+}
+        </ol>
+</table>

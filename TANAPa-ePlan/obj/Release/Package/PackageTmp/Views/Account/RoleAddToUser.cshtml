@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Role Add To User";
+}
+ <p>&nbsp;</p>
+@*<div class="span3"> @Html.ActionLink("Add New Role", "RoleCreate") </div>*@
+   <div class="span3"> @Html.ActionLink("View List of  Roles", "RoleIndex")</div>
+<div class="span3"> @Html.ActionLink("Go to Users", "UserProfile")</div>
+<div class="spacerBody">
+        <p>&nbsp;</p>
+<fieldset>
+    <legend>Assign Role to User</legend>
+@using(Html.BeginForm("RoleAddToUser", "Account")){
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="message-success">@ViewBag.ResultMessage</div>
+    <p>
+       
+        @*Select User Name: @Html.DropDownList("Users", string.Empty)*@
+        Select Username : @Html.DropDownList("UserName", null, new { })
+        Role Name: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+        <input type="submit" class="btn" value="Save" />
+    </p>
+    
+    
+}
+    </fieldset>
+
+    <fieldset>
+        <legend>Getting Roles Assign to User</legend>
+    @using(Html.BeginForm("GetRoles", "Account")){
+    @Html.AntiForgeryToken()
+
+    
+    <p> Select Username : @Html.DropDownList("UserName", null, new { }) 
+        <input type="submit" class="btn" value="Get Roles for this User" />
+    </p>
+}
+    </fieldset>   
+@if(ViewBag.RolesForThisUser != null) {
+    <text>
+    <h3>Roles for this user </h3>
+    <ol>
+@foreach (string s in ViewBag.RolesForThisUser){
+    <li>@s</li>   
+}
+                </ol>
+    </text>
+}
+        </div>
+
+ <fieldset>
+     <legend>Delete Roles from User</legend>
+
+@using (Html.BeginForm("DeleteRoleForUser", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.DropDownList("UserName", null, new { })
+        Role Name: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+        <input type="submit" class="btn" value="Delete this user from Role" />
+    </p>
+    
+    
+}
+     </fieldset>

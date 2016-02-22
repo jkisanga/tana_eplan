@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.FYear>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                LIST OF DEPT
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div class="table table-striped">
+
+@helper RenderActionColumn(int Id)
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Id})
+ }
+
+@using GridMvc.Html
+        @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.Year)
+                   .Titled("Enter Year");
+
+               columns.Add(c => c.Status)
+                   .Titled("DeptName");
+               columns.Add().Titled("Action").Sanitized(false).Encoded(false).RenderValueAs(c => RenderActionColumn(c.FYearId));
+
+           })
+                        </div>
+                </div>
+    </div>
+    </div>
+

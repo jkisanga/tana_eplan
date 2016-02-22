@@ -1,0 +1,35 @@
+﻿@model TANAPa_ePlan.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log n";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.ReturnUrl = Request["ReturnUrl"];
+}
+<section id="loginForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        
+
+        <div class="login-wrap">
+            <h4 style="color: white">@Html.ValidationSummary(true)</h4>
+            <h4>Login to <strong>TANAPA-eMONITORING</strong></h4>
+            <br />
+<strong style="color:red">@ViewBag.Message</strong>
+<strong style="color:red">@ViewBag.Message1</strong>
+<strong style="color:red">@ViewBag.Message2</strong>
+<strong style="color:red">@ViewBag.Message3</strong>
+<br />
+            <label>Enter Username  </label>
+            <input type="text" name="Username" class="form-control" />
+            <label>Enter Password  </label>
+            <input type="password" name="Password" class="form-control" />
+            <hr />
+            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-user"></span>&nbsp;Login </button>
+            &nbsp;
+        
+   
+        </div>
+
+    }
+</section>

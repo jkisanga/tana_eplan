@@ -1,0 +1,38 @@
+﻿<div class="btn-group btn-group-justified">
+    <a href="#" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-th-large"></i>
+        <span class="badge pull-right">@ViewBag.CountOfficerActivities</span>
+        <br>
+        ACTIVITIES
+                        </a>
+    <a href="#" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-align-center"></i>
+        <span class="badge pull-right">@ViewBag.CountAdhocTask</span>
+        <br>
+        AD HOC TASK(S)
+                        </a>
+    <a href="@Url.Action("ListDeptEmployee", "Home")" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-user"></i>
+        <span class="badge pull-right">@ViewBag.CountMyStaff</span>
+        <br>
+        MY STAFFS
+                        </a>
+    <a href="#" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-bullhorn"></i>
+        <span class="badge pull-right">0</span>
+        <br>
+        MY ANNOUCEMENT(S)
+                        </a>
+    <a href="#" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-bullhorn"></i>
+        <span class="badge pull-right">@ViewBag.MyAnnouncement</span>
+        <br>
+        ANNOUNCEMENT(S)
+                        </a>
+    <a href="#" class="btn btn-primary col-sm-3">
+        <i class="glyphicon glyphicon-folder-open"></i>
+        
+        <br>
+        REPORT MANAGER
+                        </a>
+</div>

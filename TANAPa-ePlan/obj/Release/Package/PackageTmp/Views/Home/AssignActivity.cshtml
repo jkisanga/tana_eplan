@@ -1,0 +1,43 @@
+﻿@model TANAPa_ePlan.Models.DeptActivity
+@{Html.RenderAction("DeptTopMenu");}
+<hr />
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-2 toppad">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        ACTIVITY ASSIGMENT FORM
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            
+                @using (Html.BeginForm("AssignActivity", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x => x.DeptActivityId)
+                    @Html.Hidden("DeptId")
+                    @Html.Hidden("HeadId")
+                    @Html.ValidationSummary(true)
+                    <div class="panel-body">
+                        <div class="form-group has-success">
+                            <label class="control-label" for="success">Activity</label>
+                            @Html.TextAreaFor(x => x.Activity, new { @class = "form-control", readOnly=true })
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group has-success">
+                                    <label class="control-label" for="success">Select Officer to Assgn the Activity </label>
+                                    @Html.DropDownList("UserId", null,  "-- Select --", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <hr />
+                                <button type="submit" class="btn btn-primary pull-right">Assign  <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

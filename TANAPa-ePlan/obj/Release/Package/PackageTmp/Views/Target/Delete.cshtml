@@ -1,0 +1,53 @@
+﻿@model TANAPa_ePlan.Models.Target
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Target</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Objective.ODescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Objective.ODescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TargetNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TargetNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DeptName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DeptName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.delete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.delete)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

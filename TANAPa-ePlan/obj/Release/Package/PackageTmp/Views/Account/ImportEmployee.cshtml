@@ -1,0 +1,39 @@
+﻿@{Html.RenderAction("MainMenu", "Home");}
+<div class="row">
+    <div class="col-md-12">
+        @*@{Html.RenderAction("DeptTopMenu");}*@
+       <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Import Employee
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("ImportEmployee", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label" for="success">Select Department</label>
+                            @Html.DropDownList("DeptId", null,  "-- Select Dept --", new { @class="form-control"})
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label" for="success">Bwouse File</label>
+                            <input type="file" id="FileUpload" name="FileUpload" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <input type="submit" value="Import" class="btn btn-primary" />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

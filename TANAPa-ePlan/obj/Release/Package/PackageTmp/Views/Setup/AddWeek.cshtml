@@ -1,0 +1,69 @@
+﻿@model TANAPa_ePlan.Models.Week
+
+@{
+    ViewBag.Title = "Week";
+}
+@{
+   List<SelectListItem> listItems= new List<SelectListItem>();
+   listItems.Add(new SelectListItem
+        {
+          Text = "First Week",
+          Value = "First Week"
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Second Week",
+            Value = "Second Week",
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Third Week",
+            Value = "Third Week"
+        });
+
+   listItems.Add(new SelectListItem
+   {
+       Text = "Fourth Week",
+       Value = "Fourth Week"
+   });
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-head-line">Week Manager </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+         @{Html.RenderAction("ListWeek", "Setup");}
+    </div>
+
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                ADD/EDIT WEEK IN MONTH
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">ACTIVE MONTH</label>
+                        @Html.Hidden("MonthId")
+                        @Html.TextBox("MonthName", null, new { @class = "form-control", readOnly=true })
+                        @Html.ValidationMessageFor(model => model.MonthId)
+                    </div>
+                    <div class="form-group has-success">
+                        <label class="control-label" for="success">SELECT MONTH</label>
+                        @Html.DropDownListFor(model => model.WeekName, listItems, "-- Select Week --", new { @class="form-control"})
+                        @Html.ValidationMessageFor(model => model.WeekName)
+                    </div>                   
+                    <hr />
+                    <input type="submit" value="Save" class="btn btn-primary" /> 
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TANAPa_ePlan.Models.Activity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Target.TargetNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Budget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Challenge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wayforward)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.delete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Target.TargetNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Budget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Challenge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wayforward)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.delete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ActivityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ActivityId })
+        </td>
+    </tr>
+}
+
+</table>
